@@ -26,7 +26,9 @@ describe('My First Test', function() {
     })
     it('visit login', function() {
         
-        authPage.email.type(EMAIL.EXISTING)
+        authPage.email.type(EMAIL.EXISTING) //export const EMAIL = {
+            //EXISTING: 'zokapacker@gmail.com',
+            //PASSWORD: 'mohandas1'  napravljeno u constans.js
         authPage.password.type(EMAIL.PASSWORD)
         authPage.submit.click()
       /* export default class AuthPage {
@@ -38,7 +40,7 @@ describe('My First Test', function() {
             }
             get submit() { 
                 return cy.get('button[type=submit]')
-            }
+            }// napravljeno u page_objects
         
         }
         
