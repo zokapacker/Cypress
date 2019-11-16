@@ -42,7 +42,7 @@ describe('My First Test', function() {
         
         }
         
-        export const authPage = new AuthPage() */
+        export const authPage = new AuthPage()  bla bla*/
     })
     it('wrong password', function() {
         
