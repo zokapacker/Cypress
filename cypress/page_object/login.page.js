@@ -8,6 +8,14 @@ export default class AuthPage {
     get submit() { 
         return cy.get('button[type=submit]')
     }
+    get alert() {
+        return cy.get('.alert-danger')
+    }
+    login(mejl, sifra) {
+        this.email.type(mejl)
+        this.password.type(sifra)
+        this.submit.click()
+    }
 
 }
 

@@ -1,5 +1,5 @@
 import { EMAIL } from '../../fixtures/constants'
-import AuthPage, { authPage } from '../../page_object/login.page'
+import { authPage } from '../../page_object/login.page'
 
 describe('My First Test', function() {
     //it('Does not do much!', function() {
@@ -26,46 +26,34 @@ describe('My First Test', function() {
     })
     it('visit login', function() {
         
-        authPage.email.type(EMAIL.EXISTING) //export const EMAIL = {
-            //EXISTING: 'zokapacker@gmail.com',
-            //PASSWORD: 'mohandas1'  napravljeno u constans.js
-        authPage.password.type(EMAIL.PASSWORD)
-        authPage.submit.click()
-      /* export default class AuthPage {
-           get email() {
-                return cy.get('input[id="email"]')
-            }
-            get password() {
-                return cy.get('input[id="password"]')
-            }
-            get submit() { 
-                return cy.get('button[type=submit]')
-            }// napravljeno u page_objects
-        
-        }
-        
-        export const authPage = new AuthPage()  bla bla*/
+        authPage.login(EMAIL.EXISTING, EMAIL.PASSWORD)
+        // PRE OVOGA BILO 
+        // authPage.email.type(EMAIL.EXISTING)
+        // authPage.password.type(EMAIL.PASSWORD)
+        // authPage.submit.click()
+      
     })
     it('wrong password', function() {
         
-        authPage.email.type(EMAIL.EXISTING)
-        authPage.password.type('mohandas')
-        authPage.submit.click()
-        cy.get('.alert-danger').should('have.text', 'Bad Credentials')
+        authPage.login(EMAIL.EXISTING, 'mohandas')
+        authPage.alert.should('have.text', 'Bad Credentials')
+        // alert ubacen u clasu na login.page.js
+        // get alert() {
+        // return cy.get('.alert-danger')
     })
     it('wrong email', function() {
         
         authPage.email.type('zokapacker@gmail.co')
         authPage.password.type('mohandas')
         authPage.submit.click()
-        cy.get('.alert-danger').should('have.text', 'Bad Credentials')
+        authPage.alert.should('have.text', 'Bad Credentials')
     })
     it('wrong email and password', function() {
         
         authPage.email.type('zeee@gmail.com')
         authPage.password.type('m')
         authPage.submit.click()
-        cy.get('.alert-danger').should('have.text', 'Bad Credentials')
+        authPage.alert.should('have.text', 'Bad Credentials')
     })
 
     
