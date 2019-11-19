@@ -90,7 +90,18 @@ describe('My First Test', function() {
         cy.get('.alert-danger').should('have.text', 'The email has already been taken.The terms and conditions must be accepted.')
         
     })
+    it('enter a valid information without checkbox', function() {
+        cy.visit("/")
+        cy.contains('Register').click()
+        cy.get('input[id="first-name"]').type('Pera')
+        cy.get('input[id="last-name"]').type('Lenger')
+        cy.get('input[id="email"]').type('zokapacker@gmail.com')// napraviti novu mejl adresu
+        cy.get('input[id="password"]').type('mohandas1')
+        cy.get('input[id="password-confirmation"]').type('mohandas1')
+        
+        cy.get('button[type=submit]').click()
+        cy.get('.alert-danger').should('have.text', 'The email has already been taken.The terms and conditions must be accepted.')
 
     
-})
 
+    })
