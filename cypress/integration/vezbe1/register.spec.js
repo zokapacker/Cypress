@@ -103,7 +103,8 @@ it('enter a valid information without email', function() {
     authPage.email.then(($input) => {
         expect($input[0].validationMessage).to.eq('Please fill out this field.')
     })
-    it('enter a valid information without valid format email', function() {
+})
+it('enter a valid information without valid format email', function() {
     
         authPage.register(EMAIL.IME, EMAIL.PREZIME)
         authPage.email.type('blablabla') //napraviti novu mejl adresu
@@ -112,18 +113,28 @@ it('enter a valid information without email', function() {
         authPage.checkbox.click()
         authPage.submit.click()
         authPage.email.then(($input) => {
-            expect($input[0].validationMessage).to.eq('Please fill out this field.')
+            expect($input[0].validationMessage).to.eq("Please include an '@' in the email address. 'blablabla' is missing an '@'.")
         })
     })
-    it('TC - 01 Register to gallery app', function() {
-        regPage.register({
+it('TC - 01 Register to gallery app', function() {
+        regPage.registerCheck({
             name: 'Pera',
             surname: 'Lenger',
             email: randomEmail(),
             password: 'mohandas1',
-            passConf: 'mohandas1'
-            
+            passConf: 'mohandas1',
+            submit: submit.click()
+
         })
     })
-})
+    it('TC - 02 with passwrd and confirmed password', function() {
+        regPage.registerCheck({
+            
+            password: 'mohandas1',
+            passConf: 'mohandas1'
+        })
+        cy.get('.alert-danger').eq(0).contains('The email has already been taken.').click()
+        cy.get('.alert-danger').eq(1).contains('The password confirmation does not match')
+    })
+    
 })

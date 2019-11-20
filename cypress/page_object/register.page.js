@@ -17,15 +17,23 @@ export default class RegPage {
     get checkbox() {
         return cy.get('input[type=checkbox]')
     }
-    register(name, surname, email, password, passConf, checkbox) {
+    get submit() {
+        return cy.get('input[type=submit]')
+    }
+    registerCheck(name, surname, email, password, passConf, checkbox) {
         this.name.type('Pera'),
         this.surname.type('Lenger'),
         this.email.type('zokapacker@gmail.com'),
         this.password.type('mohandas1'),
         this.passConf.type('mohandas1')
-        this.submit.click()
+        this.checkbox.click()
     }
-    
+    ifExist(postoji) {
+        if (!postoji) {
+            postoji = 'validdata'
+            return postoji
+        }
+    }
 
         
     }
