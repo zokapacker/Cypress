@@ -107,6 +107,17 @@ describe('My First Test', function() {
         authPage.alert.should('have.text', 'The email has already been taken.The terms and conditions must be accepted.')
         
     })
+    it('enter a valid information without checkbox', function() {
+        cy.visit("/")
+        cy.contains('Register').click()
+        cy.get('input[id="first-name"]').type('Pera')
+        cy.get('input[id="last-name"]').type('Lenger')
+        cy.get('input[id="email"]').type('zokapacker@gmail.com')// napraviti novu mejl adresu
+        cy.get('input[id="password"]').type('mohandas1')
+        cy.get('input[id="password-confirmation"]').type('mohandas1')
+        
+        cy.get('button[type=submit]').click()
+        cy.get('.alert-danger').should('have.text', 'The email has already been taken.The terms and conditions must be accepted.')
 
     it('enter a valid information with wrong confirmed password', function() {
         cy.visit("/")
@@ -130,9 +141,9 @@ describe('My First Test', function() {
         regPage.checkbox.click()
         authPage.submit.click()
         authPage.alert.should('have.text', 'The email has already been taken.The password confirmation does not match.')
+        //dodati test case sa pogresnim mejlom
     
 
-    })
 
-    //test case sa pogresnim mejlom dodati
-})
+    })
+})})
