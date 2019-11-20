@@ -1,6 +1,7 @@
 import { EMAIL } from '../../fixtures/constants'
 import { authPage } from '../../page_object/login.page'
 import { regPage } from '../../page_object/register.page'
+import { randomEmail } from '../../utils'
 
 describe('My First Test', function() {
     
@@ -101,6 +102,28 @@ it('enter a valid information without email', function() {
     authPage.submit.click()
     authPage.email.then(($input) => {
         expect($input[0].validationMessage).to.eq('Please fill out this field.')
+    })
+    it('enter a valid information without valid format email', function() {
+    
+        authPage.register(EMAIL.IME, EMAIL.PREZIME)
+        authPage.email.type('blablabla') //napraviti novu mejl adresu
+        authPage.password.type(EMAIL.PASSWORD)
+        authPage.passConfirm.type(EMAIL.PASSWORD)
+        authPage.checkbox.click()
+        authPage.submit.click()
+        authPage.email.then(($input) => {
+            expect($input[0].validationMessage).to.eq('Please fill out this field.')
+        })
+    })
+    it('TC - 01 Register to gallery app', function() {
+        regPage.register({
+            name: 'Pera',
+            surname: 'Lenger',
+            email: randomEmail(),
+            password: 'mohandas1',
+            passConf: 'mohandas1'
+            
+        })
     })
 })
 })

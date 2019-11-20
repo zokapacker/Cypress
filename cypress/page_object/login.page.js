@@ -28,6 +28,8 @@ export default class AuthPage {
         this.ime.type(Name)
         this.prezime.type(LastName)
     }
+    //napraviti register ponovo samo sa vise parametara
+
 
     login(mejl, sifra) {
         this.email.type(mejl)

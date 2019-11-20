@@ -17,15 +17,28 @@ export default class RegPage {
     get checkbox() {
         return cy.get('input[type=checkbox]')
     }
-    register(Name, LastName) {
-        this.ime.type(Name)
-        this.prezime.type(LastName)
+    register(name, surname, email, password, passConf, checkbox) {
+        this.name.type('Pera'),
+        this.surname.type('Lenger'),
+        this.email.type('zokapacker@gmail.com'),
+        this.password.type('mohandas1'),
+        this.passConf.type('mohandas1')
+        this.submit.click()
+    }
+    
+
+        
+    }
+    
+    
+    //register(name, Surname) {
+        //this.ime.type(Name)
+        //this.prezime.type(LastName)
         /*this.email.type(mejl)
         this.password.type(sifra)
         this.passConfirm.type(sifra)
         this.checkbox.click()
         this.submit.click()*/
 
-    }
-}
+    
 export const regPage = new RegPage()
