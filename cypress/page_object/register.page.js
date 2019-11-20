@@ -5,6 +5,12 @@ export default class RegPage {
     get prezime() {
         return cy.get('input[id="last-name"]')
     }
+    get email() {
+        return cy.get('input[id="email"]')
+    }
+    get password() {
+        return cy.get('input[id="password"]')
+    }
     get passConfirm() {
         return cy.get('input[id="password-confirmation"]')   
     }
