@@ -2,6 +2,7 @@ import { EMAIL } from '../../fixtures/constants'
 import { authPage } from '../../page_object/login.page'
 import { regPage } from '../../page_object/register.page'
 import { randomEmail } from '../../utils'
+import { REGISTER } from '../../fixtures/constants'
 
 describe('My First Test', function() {
     
@@ -116,25 +117,47 @@ it('enter a valid information without valid format email', function() {
             expect($input[0].validationMessage).to.eq("Please include an '@' in the email address. 'blablabla' is missing an '@'.")
         })
     })
-it('TC - 01 Register to gallery app', function() {
-        regPage.registerCheck({
-            name: 'Pera',
-            surname: 'Lenger',
-            email: randomEmail(),
-            password: 'mohandas1',
-            passConf: 'mohandas1',
-            submit: submit.click()
+it('TC - 10 register with random email', function() {
+    regPage.register(EMAIL.IME, EMAIL.PREZIME)
+    regPage.email.randomEmail()
+    regPage.password.type(EMAIL.PASSWORD)
+    regPage.passConfirm.type(EMAIL.PASSWORD)
+    regPage.checkbox.click()
+    regPage.submit.click()
+})
 
+
+it('TC - 11 Register to gallery app', function() {
+        regPage.register(' ', ' ', ' ', ' ', 'blabla')
+        regPage.checkbox.click()
+        regPage.email.then(($input) => {
+            expect($input[0].validationMessage).to.eq('Please fill out this field.')
         })
-    })
-    it('TC - 02 with passwrd and confirmed password', function() {
+
+
+        
+            
+    
+})
+    it('TC - 12 with passwrd and confirmed password', function() {
         regPage.registerCheck({
             
             password: 'mohandas1',
             passConf: 'mohandas1'
         })
-        cy.get('.alert-danger').eq(0).contains('The email has already been taken.').click()
-        cy.get('.alert-danger').eq(1).contains('The password confirmation does not match')
+
+        RegPage.email.then(($input) => {
+            expect($input[0].validationMessage).to.eq('Please fill out this field.')
+        })
+        //cy.get('.alert-danger').eq(0).contains('The email has already been taken.').click()
+        //cy.get('.alert-danger').eq(1).contains('The password confirmation does not match')
     })
+    it('TC - 13 Register to galery app invalid name - invalid email', function() {
+        regPage.registerCheck(REGISTER)
+        regPage.email.then(($input) => {
+            expect($input[0].validationMessage).to.eq('Please fill out this field.')
+        })
+    })
+    
     
 })

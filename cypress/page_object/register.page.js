@@ -18,15 +18,15 @@ export default class RegPage {
         return cy.get('input[type=checkbox]')
     }
     get submit() {
-        return cy.get('input[type=submit]')
+        return cy.get('button[type=submit]')
     }
-    registerCheck(name, surname, email, password, passConf, checkbox) {
-        this.name.type('Pera'),
-        this.surname.type('Lenger'),
-        this.email.type('zokapacker@gmail.com'),
-        this.password.type('mohandas1'),
-        this.passConf.type('mohandas1')
-        this.checkbox.click()
+    register(name, surname, email, password, passConf) {
+        this.ime.type(this.ifExist(name)),
+        this.prezime.type(this.ifExist(surname)),
+        this.email.type(this.ifExist(email)),
+        this.password.type(this.ifExist(password)),
+        this.passConfirm.type(this.ifExist(passConf))
+        this.submit.click()
     }
     ifExist(postoji) {
         if (!postoji) {
@@ -34,6 +34,10 @@ export default class RegPage {
             return postoji
         }
     }
+    registerCheck({name, surname, email, password, passConf}) {
+        this.checkBox.click()
+        this.register({name, surname, email, password, passConf})
+      }
 
         
     }
