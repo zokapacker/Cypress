@@ -15,7 +15,19 @@ export default class CreatePage {
         return cy.get('.btn-custom').contains('Cancel').click()
     }
     get addImage() {
-        return cy.contains('Add Image')
+        return cy.contains('Add image')
+    }
+    get deleteButton() {
+        return cy.get('.fa-trash')
+    }
+    get buttonUp() {
+        return cy.get('.fa-chevron-circle-up')
+    }
+    get buttonDown() {
+        return cy.get('.fa-chevron-circle-down')
+    }
+    get alert() {
+        return cy.get('.alert-danger')
     }
     create(title, description, images) {
         this.title.type(title)
