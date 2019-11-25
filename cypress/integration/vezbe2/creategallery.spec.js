@@ -8,7 +8,7 @@ describe('My third Test', function () {
         cy.visit("/login")
         authPage.login(EMAIL.EXISTING, EMAIL.PASSWORD)
     })
-    /*it('TC 01 testiranje paginacije 1. nacin', function() {
+    it('TC 01 testiranje paginacije 1. nacin', function() {
         cy.get('.cell').eq(9)
         cy.get('.cell').eq(10).should('not.exist')
         cy.get('.btn-custom').click()
@@ -24,18 +24,18 @@ describe('My third Test', function () {
     })
     it('TC 02 automatizovati pozitivan test case za create gallery', function() {
         cy.contains('Create Gallery').click()
-        createPage.title.type('vezba2')
-        createPage.description.type('opis2')
-        createPage.images.type('https://thumbs-prod.si-cdn.com/axLBu4V_KP6gbQQtbRulSdlWkXQ=/420x240/https://public-media.si-cdn.com/filer/28/bc/28bc19a4-ec88-4e71-9ff2-19efc1375e6c/ap_18295547401274.jpg')
+        createPage.title.type(CREATE.validTitle)
+        createPage.description.type(CREATE.descr)
+        createPage.images.type(CREATE.picture)
         createPage.submit.click()
     
 
     })
-    /*it('TC 03 automatizovati pozitivan test case za create gallery', function() {
+    it('TC 03 automatizovati pozitivan test case za create gallery', function() {
         cy.contains('Create Gallery').click()
-        createPage.create('pera','dada','https://thumbs-prod.si-cdn.com/axLBu4V_KP6gbQQtbRulSdlWkXQ=/420x240/https://public-media.si-cdn.com/filer/28/bc/28bc19a4-ec88-4e71-9ff2-19efc1375e6c/ap_18295547401274.jpg')
-        //cy.get('.box-title').eq(0).should('have.text', 'pera')
-        cy.get('.box-title').eq(0).should('contain', 'pera')
+        createPage.create(CREATE.validTitle,CREATE.descr, CREATE.picture)
+        //cy.get('.box-title').eq(0).should('have.text', CREATE.validTitle)
+        cy.get('.box-title').eq(0).should('contain', CREATE.validTitle)
         // ako ne radi aplikacija a ostao naziv nove galerije isti kao od ranije, 
         // onda napraviti random string koji dodeljuje novi naziv
         // 1. import random funkcije (utils.js)
@@ -43,7 +43,7 @@ describe('My third Test', function () {
         // 3. type (random)
         // 4. (contains, random)
     })
-    /*it('TC 04 testiranje dodavanja input polja za sliku', function() {
+    it('TC 04 testiranje dodavanja input polja za sliku', function() {
         cy.contains('Create Gallery').click()
         createPage.addImage.click()
         createPage.images.should('have.length', 2)
@@ -51,7 +51,7 @@ describe('My third Test', function () {
         createPage.images.should('have.length', 1)
         createPage.addImage.click()
         createPage.buttonUp.last().click()
-        // za sta se uhvatiti da bi proverili da li je donje polje posle klika otislo gore?*/
+    })  // za sta se uhvatiti da bi proverili da li je donje polje posle klika otislo gore?
     it('TC 05 testiranje input polja TITLE na negativne slucajeve', function() {
         cy.contains('Create Gallery').click()
         createPage.create('1', CREATE.descr, CREATE.picture)
@@ -68,19 +68,23 @@ describe('My third Test', function () {
         createPage.create(CREATE.invalidTitle, CREATE.descr, CREATE.picture)
         createPage.alert.should('have.text', 'The title may not be greater than 255 characters.')
     })
-    it.only('TC 08 testiranje input polja DESCRIPTION', function() {
+    it('TC 08 testiranje input polja DESCRIPTION', function() {
         cy.contains('Create Gallery').click()
         createPage.create(CREATE.validTitle, CREATE.descr1000, CREATE.picture)
-        cy.get('.box-title').eq(0).click()
-        cy.get('.p').should('have.text', CREATE.descr1000)// da li gadjati title ili descr da bi proverili da li je dodat descr od 1000 karaktera
+        cy.get('.box-title').eq(0).should('contain', CREATE.validTitle)
+        //cy.get('.box-title').eq(0).click()????
+        //cy.should('contain', CREATE.descr1000)//????
+        //cy.get('.p').should('have.text', CREATE.descr1000)// da li gadjati title ili descr da bi proverili da li je dodat descr od 1000 karaktera
 
     })
     it('TC 09 testiranje CANCEL button', function() {
-        
+        cy.contains('Create Gallery').click()
+        createPage.cancel.click()
+        createPage.title.should('not.exist'), createPage.description.should('not.exist'), createPage.images.should('not.exist')
     })
     
 
 
 
     
-})
+    })
