@@ -11,11 +11,11 @@ describe('My First Test', function() {
         cy.contains('Register').click()
     })
 
-it('Checking register on gallery.app', function() {
+it('TC 01 Checking register on gallery.app', function() {
     
     cy.url().should('include', '/register' )
 })
-it('enter a valid information skr', function() {
+it('TC 02 enter a valid information skr', function() {
     
     authPage.register(EMAIL.IME, EMAIL.PREZIME)
     authPage.email.type(EMAIL.EXISTING) //napraviti novu mejl adresu
@@ -25,7 +25,7 @@ it('enter a valid information skr', function() {
     authPage.submit.click()
     authPage.alert.should('have.text', 'The email has already been taken.')
 })
-it('enter a valid information', function() {
+it('TC 03 enter a valid information', function() {
     
     authPage.register(EMAIL.IME, EMAIL.PREZIME)
     authPage.email.type(EMAIL.EXISTING) //napraviti novu mejl adresu
@@ -45,7 +45,7 @@ it('enter a valid information', function() {
     cy.get('.alert-danger').should('have.text', 'The email has already been taken.')*/
 })
 
-it('enter already existing email', function() {
+it('TC 04 enter already existing email', function() {
     
     authPage.register(EMAIL.IME, EMAIL.PREZIME)
     authPage.email.type(EMAIL.EXISTING) //napraviti novu mejl adresu
@@ -57,7 +57,7 @@ it('enter already existing email', function() {
     
 })
 
-it('enter a valid information without checkbox', function() {
+it('TC 05 enter a valid information without checkbox', function() {
     
     authPage.register(EMAIL.IME, EMAIL.PREZIME)
     authPage.email.type(EMAIL.EXISTING) //napraviti novu mejl adresu
@@ -70,7 +70,7 @@ it('enter a valid information without checkbox', function() {
 })
 
 
-it('enter a valid information with wrong confirmed password', function() {
+it('TC 06 enter a valid information with wrong confirmed password', function() {
     
     authPage.register(EMAIL.IME, EMAIL.PREZIME)
     authPage.email.type(EMAIL.EXISTING) //napraviti novu mejl adresu
@@ -81,7 +81,7 @@ it('enter a valid information with wrong confirmed password', function() {
     authPage.alert.should('have.text', 'The email has already been taken.The password confirmation does not match.')
     
 })
-it('enter a valid information with wrong password', function() {
+it('TC 07 enter a valid information with wrong password', function() {
     
     authPage.register(EMAIL.IME, EMAIL.PREZIME)
     authPage.email.type(EMAIL.EXISTING) //napraviti novu mejl adresu
@@ -93,7 +93,7 @@ it('enter a valid information with wrong password', function() {
     //dodati test case sa pogresnim mejlom
 })
 
-it('enter a valid information without email', function() {
+it('TC 08 enter a valid information without email', function() {
     
     authPage.register(EMAIL.IME, EMAIL.PREZIME)
     authPage.email.type(' ') //napraviti novu mejl adresu
@@ -105,7 +105,7 @@ it('enter a valid information without email', function() {
         expect($input[0].validationMessage).to.eq('Please fill out this field.')
     })
 })
-it('enter a valid information without valid format email', function() {
+it('TC 09 enter a valid information without valid format email', function() {
     
         authPage.register(EMAIL.IME, EMAIL.PREZIME)
         authPage.email.type('blablabla') //napraviti novu mejl adresu
@@ -127,8 +127,8 @@ it('TC - 10 register with random email', function() {
 })
 
 
-it('TC - 11 Register to gallery app', function() {
-        regPage.register(' ', ' ', ' ', ' ', 'blabla')
+it.only('TC - 11 Register to gallery app', function() {
+        regPage.register(EMAIL.IME, EMAIL.PREZIME, EMAIL.EXISTING, EMAIL.PASSWORD, EMAIL.PASSWORD)
         regPage.checkbox.click()
         regPage.email.then(($input) => {
             expect($input[0].validationMessage).to.eq('Please fill out this field.')
