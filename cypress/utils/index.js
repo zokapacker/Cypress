@@ -10,6 +10,7 @@ export const randomEmail = () => {
 export const randomTitle = () => {
     return (
         Math.random()
-        .toString(256)
+        .toString(36)
+        .substr(2, 7)
     );
 }

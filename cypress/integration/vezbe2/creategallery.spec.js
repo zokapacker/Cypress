@@ -31,11 +31,14 @@ describe('My third Test', function () {
     
 
     })
-    it('TC 03 automatizovati pozitivan test case za create gallery', function() {
+    it('TC 03 autom. poz. test case za create gallery sa random Title i da li se ona pojavila na home page', function() {
+        var random = randomTitle()
+        
         cy.contains('Create Gallery').click()
-        createPage.create(CREATE.validTitle,CREATE.descr, CREATE.picture)
-        //cy.get('.box-title').eq(0).should('have.text', CREATE.validTitle)
-        cy.get('.box-title').eq(0).should('contain', CREATE.validTitle)
+        createPage.create(random, CREATE.descr, CREATE.picture)
+        cy.get('.box-title').eq(0).should('contain', random)
+
+        //moze i ovako   cy.get('.box-title').eq(0).should('have.text', CREATE.validTitle)
         // ako ne radi aplikacija a ostao naziv nove galerije isti kao od ranije, 
         // onda napraviti random string koji dodeljuje novi naziv
         // 1. import random funkcije (utils.js)
@@ -43,14 +46,17 @@ describe('My third Test', function () {
         // 3. type (random)
         // 4. (contains, random)
     })
-    it('TC 04 testiranje dodavanja input polja za sliku', function() {
+    it.only('TC 04 testiranje dodavanja input polja za sliku', function() {
         cy.contains('Create Gallery').click()
         createPage.addImage.click()
         createPage.images.should('have.length', 2)
         createPage.deleteButton.last().click()
         createPage.images.should('have.length', 1)
         createPage.addImage.click()
+        createPage.images.last().type('dole')
+        createPage.images.first().type('gore')
         createPage.buttonUp.last().click()
+        createPage.images.first().should('contain', 'dole')
     })  // za sta se uhvatiti da bi proverili da li je donje polje posle klika otislo gore?
     it('TC 05 testiranje input polja TITLE na negativne slucajeve', function() {
         cy.contains('Create Gallery').click()
