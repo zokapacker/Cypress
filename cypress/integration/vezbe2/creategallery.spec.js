@@ -46,7 +46,7 @@ describe('My third Test', function () {
         // 3. type (random)
         // 4. (contains, random)
     })
-    it.only('TC 04 testiranje dodavanja input polja za sliku', function() {
+    it('TC 04 testiranje dodavanja input polja za sliku', function() {
         cy.contains('Create Gallery').click()
         createPage.addImage.click()
         createPage.images.should('have.length', 2)
@@ -56,7 +56,7 @@ describe('My third Test', function () {
         createPage.images.last().type('dole')
         createPage.images.first().type('gore')
         createPage.buttonUp.last().click()
-        createPage.images.first().should('contain', 'dole')
+        createPage.images.first().should('have.value', 'dole')
     })  // za sta se uhvatiti da bi proverili da li je donje polje posle klika otislo gore?
     it('TC 05 testiranje input polja TITLE na negativne slucajeve', function() {
         cy.contains('Create Gallery').click()
