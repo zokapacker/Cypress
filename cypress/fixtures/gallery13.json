@@ -1,0 +1,83 @@
+{
+    "galleries": [
+{
+    "id": 1055,
+    "title": "8izjs4r",
+    "description": "0.wlf0n6m240f",
+    "user_id": 59,
+    "created_at": "2019-11-27 15:27:40",
+    "updated_at": "2019-11-27 15:27:40",
+    "user": {
+      "id": 59,
+      "first_name": "iv",
+      "last_name": "pi",
+      "email": "ivi@gmail.com",
+      "terms_and_conditions": 1,
+      "created_at": "2019-11-06 18:58:33",
+      "updated_at": "2019-11-06 18:58:33"
+    },
+    "images": [
+      {
+        "id": 2208,
+        "image_url": "https:\\/\\/thebusywomanproject.com\\/content\\/images\\/2017\\/04\\/best-superwoman-clipart-24168-clipartion-com-1SfBTH-clipart.jpg",
+        "gallery_id": 1055,
+        "created_at": "2019-11-27 15:27:40",
+        "updated_at": "2019-11-27 15:27:40"
+      }
+    ]
+  },
+  {
+    "id": 1054,
+    "title": "bc8rflt@vivifyacademy.com",
+    "description": "slike1",
+    "user_id": 62,
+    "created_at": "2019-11-27 13:19:48",
+    "updated_at": "2019-11-27 13:19:48",
+    "user": {
+      "id": 62,
+      "first_name": "boki",
+      "last_name": "boki",
+      "email": "boki@gmail.com",
+      "terms_and_conditions": 1,
+      "created_at": "2019-11-07 16:20:43",
+      "updated_at": "2019-11-07 16:20:43"
+    },
+    "images": [
+      {
+        "id": 2207,
+        "image_url": "https:\\/\\/upload.wikimedia.org\\/wikipedia\\/en\\/b\\/b3\\/Imagine_Dragons_performing_in_Sydney.jpg",
+        "gallery_id": 1054,
+        "created_at": "2019-11-27 13:19:48",
+        "updated_at": "2019-11-27 13:19:48"
+      }
+    ]
+  },
+  {
+    "id": 1053,
+    "title": "LA",
+    "description": "default",
+    "user_id": 2,
+    "created_at": "2019-11-26 23:17:25",
+    "updated_at": "2019-11-26 23:17:25",
+    "user": {
+      "id": 2,
+      "first_name": "Olivera",
+      "last_name": "Delic",
+      "email": "olivera.delic.07@gmail.com",
+      "terms_and_conditions": 1,
+      "created_at": "2019-10-10 10:19:50",
+      "updated_at": "2019-10-10 10:19:50"
+    },
+    "images": [
+      {
+        "id": 2206,
+        "image_url": "https:\\/\\/upload.wikimedia.org\\/wikipedia\\/commons\\/thumb\\/f\\/f5\\/Lotus_flower_%28978659%29.jpg\\/1200px-Lotus_flower_%28978659%29.jpg",
+        "gallery_id": 1053,
+        "created_at": "2019-11-26 23:17:25",
+        "updated_at": "2019-11-26 23:17:25"
+      }
+    ]
+  }
+],
+"count": 13
+}
