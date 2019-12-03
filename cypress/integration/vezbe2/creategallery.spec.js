@@ -37,7 +37,6 @@ describe('My third Test', function () {
         cy.contains('Create Gallery').click()
         createPage.create(random, CREATE.descr, CREATE.picture)
         cy.get('.box-title').eq(0).should('contain', random)
-
         //moze i ovako   cy.get('.box-title').eq(0).should('have.text', CREATE.validTitle)
         // ako ne radi aplikacija a ostao naziv nove galerije isti kao od ranije, 
         // onda napraviti random string koji dodeljuje novi naziv
