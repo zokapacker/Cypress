@@ -3,17 +3,23 @@ export default class CreateGradePage {
         return cy.get('#title')
     }
     get professor() {
-        return cy.get('#professor')
+        return cy.get('#professor').select('sss sss')
     }
     get submit() {
-        return cy.get('button[type=submit]')
+        return cy.get('.btn-primary').contains('Submit')
     }
-    
-    createProf(ime, prezime, urlSlike) {
-        this.first_name.type(ime)
-        this.last_name.type(prezime)
-        this.add_images.click()
-        this.image_url.type(urlSlike)
+    get add_student() {
+        return cy.get('.btn-primary').contains('Add Student').click()
+    }
+    get student_add_image() {
+        return cy.get('.btn-primary').contains('Add images')
+    }
+    get comment() {
+        return cy.get('textarea')
+    }
+    createGrade(naziv_dnevnika, select_profesora) {
+        this.gradebook_title.type(naziv_dnevnika)
+        this.professor.type(select_profesora)
         this.submit.click()
     }
     

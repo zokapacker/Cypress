@@ -7,7 +7,7 @@ describe('HOME PAGE', function () {
     beforeEach(() => {
         cy.visit('/')
         cy.contains('Sign in').click()
-        logPage.logiimportn(EMAIL.EXISTING, EMAIL.PASSWORD)
+        logPage.login(EMAIL.EXISTING, EMAIL.PASSWORD)
             
     })
     it('TC 01 Create professor on gradebook', function() {
@@ -21,10 +21,10 @@ describe('HOME PAGE', function () {
         createProfPage.image_url.type(CREATE.picture)
         createProfPage.submit.click()*/
     })
-    it('TC 02 Checking existing of created professor', function() {
+    it.only('TC 02 Checking existing of created professor', function() {
         cy.contains('Professors').click()
         cy.contains('All Professors').click()
-        cy.get('.table-dark').children('tbody').last().should('contain', 'zokabla')
+        cy.get('.table-dark').children('tbody').last().should('contain', 'zoka')
     })
     it('TC 03 all professors page', function() {
         cy.contains('Professors').click()
@@ -34,7 +34,7 @@ describe('HOME PAGE', function () {
         cy.get('.table-dark').should('contain', 'Picture')
         cy.get('.table-dark').should('contain', 'Gradebook')
     })
-    it.only('TC 04 single professor page', function() {
+    it('TC 04 single professor page', function() {
         cy.get('td').eq(1).click()
         cy.get('.table-striped').should('contain', 'Professor')
         cy.get('.table-striped').should('contain', 'Gradebook')

@@ -10,21 +10,18 @@ describe('HOME PAGE', function () {
         logPage.login(EMAIL.EXISTING, EMAIL.PASSWORD)
             
     })
-    it('TC 01 Create gradebook on gradebook-app', function() {
-        cy.contains('Create Gradebook').click()
-        createGradePage.gradebook_title.type('lele')
-        createGradePage.professor.select('zoka blablabla')
-        createGradePage.submit.click()
-        // createGradePage.createGrade('lele', 'sss sss')
-        cy.url().should('include', 'gradebook')
-        
+    it('TC 01 Create comment on gradebook-app', function() {
+        cy.contains('My Gradebook').click()
+        createGradePage.comment.type('lala')
+        createGradePage.submit.click()  
     })
-    it('TC 02 Checking existing of created gradebook', function() {
-        cy.get('.table-dark').children('tbody').last().should('contain', 'sss')
-        // kako dopreti do poslednjeg ako ima vise stranica? da li klikcati stalno 'next'?
+    it.only('TC 02 Checking existing of created comment', function() {
+        cy.contains('My Gradebook').click()
+        cy.get('div').children('div').eq(1).children('div').last().should('contain', 'lala')
+        
 
     })
-    it.only('TC 03 My gradebook page', function() {
+    it('TC 03 My gradebook page', function() {
         cy.contains('My Gradebook').click()
         cy.get('.table-dark').should('contain', 'Gradebook')
         cy.get('.table-dark').should('contain', 'Professor')
