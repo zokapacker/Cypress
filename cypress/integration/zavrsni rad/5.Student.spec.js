@@ -1,9 +1,9 @@
 import{ EMAIL } from "../../fixtures/constants";
 import { logPage } from "../../page_object/gradebookLogin.page"
-import { createGradePage } from "../../page_object/createGradebook.page" // promeniti 
+import { createGradePage } from "../../page_object/Gradebook.page" // promeniti 
 import { randomFirstName } from "../../utils"
 import { CREATE } from "../../fixtures/constants"
-import { createProfPage } from "../../page_object/createProfessor.page";
+import { createProfPage } from "../../page_object/Professor.page";
 describe('HOME PAGE', function () {
     beforeEach(() => {
         cy.visit('/')
@@ -26,7 +26,6 @@ describe('HOME PAGE', function () {
         cy.contains('My Gradebook').click()
         cy.get('td').eq(3).children('ul').children('li').last().should('contain', 'lele Studentic')
         
-
     })
     
     

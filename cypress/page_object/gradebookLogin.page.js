@@ -13,7 +13,7 @@ export default class LogPage {
         return cy.get('input[type=text]')
     }
     get search() {
-        return cy.get('.btn-md').contains('Search')
+        return cy.get('.btn-md').contains('Search').click()
     }
     login(mejl, sifra) {
         this.email.type(mejl)

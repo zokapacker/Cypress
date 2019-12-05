@@ -1,6 +1,6 @@
 import{ EMAIL } from "../../fixtures/constants";
 import { logPage } from "../../page_object/gradebookLogin.page"
-import { createProfPage } from "../../page_object/createProfessor.page" // promeniti 
+import { profPage } from "../../page_object/Professor.page" // promeniti 
 import { randomFirstName } from "../../utils"
 import { CREATE } from "../../fixtures/constants"
 describe('HOME PAGE', function () {
@@ -13,7 +13,7 @@ describe('HOME PAGE', function () {
     it('TC 01 Create professor on gradebook', function() {
         cy.contains('Professors').click()
         cy.contains('Create Professor').click()
-        createProfPage.createProf('zoka', 'lala', CREATE.picture)
+        profPage.createProf('Zoka', 'lala', CREATE.picture)
         cy.url().should('include', 'all-professors')
         /*createProfPage.first_name.type('zoka')
         createProfPage.last_name.type('lala')
@@ -21,10 +21,10 @@ describe('HOME PAGE', function () {
         createProfPage.image_url.type(CREATE.picture)
         createProfPage.submit.click()*/
     })
-    it.only('TC 02 Checking existing of created professor', function() {
+    it('TC 02 Checking existing of created professor', function() {
         cy.contains('Professors').click()
         cy.contains('All Professors').click()
-        cy.get('.table-dark').children('tbody').last().should('contain', 'zoka')
+        cy.get('.table-dark').children('tbody').last().should('contain', 'Zoka')
     })
     it('TC 03 all professors page', function() {
         cy.contains('Professors').click()

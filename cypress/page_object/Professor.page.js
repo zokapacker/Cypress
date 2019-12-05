@@ -1,4 +1,4 @@
-export default class CreateProfPage {
+export default class ProfPage {
     get first_name() {
         return cy.get('#firstName')
     }
@@ -34,4 +34,4 @@ export default class CreateProfPage {
     
     
 }
-export const createProfPage = new CreateProfPage()
+export const profPage = new ProfPage()
