@@ -23,6 +23,18 @@ export default class ProfPage {
     get image_url() {
         return cy.get('input[name=image_NaN]')
     }
+    get tabela_bela() {
+        return cy.get('.table-striped')
+    }
+    get professors() {
+        cy.get('.dropdown-toggle').contains('Professors').click()
+    }
+    get all_professors() {
+        cy.contains('All Professors').click()
+    }
+    get create_professor() {
+        cy.get('.dropdown-item').contains('Create Professor').click()
+    }
     
     createProf(ime, prezime, urlSlike) {
         this.first_name.type(ime)

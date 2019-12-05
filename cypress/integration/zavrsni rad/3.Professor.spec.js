@@ -1,8 +1,9 @@
 import{ EMAIL } from "../../fixtures/constants";
-import { logPage } from "../../page_object/gradebookLogin.page"
+import { logPage } from "../../page_object/loginGradebook.page"
 import { profPage } from "../../page_object/Professor.page" // promeniti 
 import { randomFirstName } from "../../utils"
 import { CREATE } from "../../fixtures/constants"
+import { gradePage } from "../../page_object/Gradebook.page";
 describe('HOME PAGE', function () {
     beforeEach(() => {
         cy.visit('/')
@@ -10,9 +11,9 @@ describe('HOME PAGE', function () {
         logPage.login(EMAIL.EXISTING, EMAIL.PASSWORD)
             
     })
-    it('TC 01 Create professor on gradebook', function() {
-        cy.contains('Professors').click()
-        cy.contains('Create Professor').click()
+    it('TC 01 CREATE professor on gradebook', function() {
+        cy.contains('Professors').click()//profPage.professors.click()
+        cy.contains('Create Professor').click()//profPage.create_professor.click()
         profPage.createProf('Zoka', 'lala', CREATE.picture)
         cy.url().should('include', 'all-professors')
         /*createProfPage.first_name.type('zoka')
@@ -21,26 +22,26 @@ describe('HOME PAGE', function () {
         createProfPage.image_url.type(CREATE.picture)
         createProfPage.submit.click()*/
     })
-    it('TC 02 Checking existing of created professor', function() {
-        cy.contains('Professors').click()
-        cy.contains('All Professors').click()
-        cy.get('.table-dark').children('tbody').last().should('contain', 'Zoka')
+    it('TC 02 CHECKING existing of created professor', function() {
+        cy.contains('Professors').click()//profPage.professors
+        cy.contains('All Professors').click()//profPage.all_professors
+        gradePage.table_dark.children('tbody').last().should('contain', 'Zoka')
     })
-    it('TC 03 all professors page', function() {
-        cy.contains('Professors').click()
-        cy.contains('All Professors').click()
-        cy.get('.table-dark').should('contain', 'FirstName')
-        cy.get('.table-dark').should('contain', 'LastName')
-        cy.get('.table-dark').should('contain', 'Picture')
-        cy.get('.table-dark').should('contain', 'Gradebook')
+    it('TC 03 ALL professors page', function() {
+        cy.contains('Professors').click()//profPage.professors.click()
+        cy.contains('All Professors').click()//profPage.all_professors.click()
+        gradePage.table_dark.should('contain', 'FirstName')
+        gradePage.table_dark.should('contain', 'LastName')
+        gradePage.table_dark.should('contain', 'Picture')
+        gradePage.table_dark.should('contain', 'Gradebook')
     })
-    it('TC 04 single professor page', function() {
+    it('TC 04 SINGLE professor page', function() {
         cy.get('td').eq(1).click()
-        cy.get('.table-striped').should('contain', 'Professor')
-        cy.get('.table-striped').should('contain', 'Gradebook')
-        cy.get('.table-striped').should('contain', 'Image')
-        cy.get('.table-striped').should('contain', 'Number of students')
+        profPage.tabela_bela.should('contain', 'Professor')
+        profPage.tabela_bela.should('contain', 'Gradebook')
+        profPage.tabela_bela.should('contain', 'Image')
+        profPage.tabela_bela.should('contain', 'Number of students')
         cy.get('td').eq(1).click()
-        cy.url().should('include', 'single-gradebook')
+        cy.url().should('include', 'single-professor')
     })
 })

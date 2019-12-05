@@ -1,6 +1,6 @@
 import{ EMAIL } from "../../fixtures/constants";
 import { logPage } from "../../page_object/gradebookLogin.page"
-import { gradePage } from "../../page_object/Gradebook.page" // promeniti 
+import { commentPage } from "../../page_object/Gradebook.page" // promeniti 
 import { randomFirstName } from "../../utils"
 import { CREATE } from "../../fixtures/constants"
 describe('HOME PAGE', function () {
@@ -12,8 +12,8 @@ describe('HOME PAGE', function () {
             
     })
     it('TC 01 Create comment on gradebook-app', function() {
-        gradePage.comment.type('lala')
-        gradePage.submit.click()
+        commentPage.comment.type('lala')
+        commentPage.submit_comment.click()
         cy.contains('My Gradebook').click()
         //cy.contains('My Gradebook').click()
         //cy.wait(3000)
@@ -29,8 +29,8 @@ describe('HOME PAGE', function () {
         cy.get('.comments-box').should('contain', 'Comment Author')
     })
     it('TC 04 Remove comment', function() {
-        gradePage.delete_comment.click()
-        gradePage.delete_comment.should('not.exist')
+        commentPage.delete_comment.click()
+        commentPage.delete_comment.should('not.exist')
 
     })
     

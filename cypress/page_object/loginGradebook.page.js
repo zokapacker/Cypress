@@ -9,12 +9,6 @@ export default class LogPage {
     get submit() { 
         return cy.get('button[type=submit]')
     }
-    get gradebook_filter() {
-        return cy.get('input[type=text]')
-    }
-    get search() {
-        return cy.get('.btn-md').contains('Search').click()
-    }
     login(mejl, sifra) {
         this.email.type(mejl)
         this.password.type(sifra)

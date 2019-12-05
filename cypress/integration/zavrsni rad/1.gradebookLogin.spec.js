@@ -12,13 +12,9 @@ describe('LOGIN', function() {
         
         cy.url().should('include', '/login' )
     })
-    it('TC 02 Login', function() {
-        
+    it.only('TC 02 Login', function() {
         logPage.login(EMAIL.EXISTING, EMAIL.PASSWORD)
-        // PRE OVOGA BILO 
-        // logPage.email.type(EMAIL.EXISTING)
-        // logPage.password.type(EMAIL.PASSWORD)
-        // logPage.submit.click()
-      
+        cy.get('.nav-link').should('contain', 'Sign out')
     })
+
 })
