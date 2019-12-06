@@ -4,7 +4,7 @@ import { profPage } from "../../page_object/Professor.page" // promeniti
 import { randomFirstName } from "../../utils"
 import { CREATE } from "../../fixtures/constants"
 import { gradePage } from "../../page_object/Gradebook.page";
-describe('HOME PAGE', function () {
+describe('PROFESSOR PAGE', function () {
     beforeEach(() => {
         cy.visit('/')
         cy.contains('Sign in').click()

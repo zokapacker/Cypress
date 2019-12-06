@@ -1,12 +1,12 @@
 import { EMAIL } from "../../fixtures/constants/"
 import { logPage } from '../../page_object/loginGradebook.page'
 import { gradePage } from '../../page_object/Gradebook.page.js'
+
 describe('HOME PAGE', function () {
     beforeEach(() => {
         cy.visit('/')
         cy.contains('Sign in').click()
         logPage.login(EMAIL.EXISTING, EMAIL.PASSWORD)
-            
     })
     /*it('TC 01 Home page and pagination', function() {
             cy.server()

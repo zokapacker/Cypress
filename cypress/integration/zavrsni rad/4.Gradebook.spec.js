@@ -3,7 +3,7 @@ import { logPage } from "../../page_object/loginGradebook.page"
 import { gradePage } from "../../page_object/Gradebook.page" // promeniti 
 import { random_string } from "../../utils"
 import { CREATE } from "../../fixtures/constants"
-describe('HOME PAGE', function () {
+describe('GRADEBOOK PAGE', function () {
     beforeEach(() => {
         cy.visit('/')
         cy.contains('Sign in').click()
