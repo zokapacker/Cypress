@@ -9,7 +9,7 @@ export default class GradePage {
         return cy.get('.btn-primary').contains('Submit')
     }
     get add_student() {
-        return cy.get('.btn-primary').contains('Add Student').click()
+        return cy.get('.btn-primary').contains('Add Student')
     }
     get student_add_image() {
         return cy.get('.btn-primary').contains('Add images')
@@ -28,6 +28,9 @@ export default class GradePage {
     }
     get table_dark() {
         return cy.get('.table-dark')
+    }
+    get my_gradebook() {
+        return cy.contains('My Gradebook').click()
     }
     createGrade(naziv_dnevnika, select_profesora) {
         this.gradebook_title.type(naziv_dnevnika)

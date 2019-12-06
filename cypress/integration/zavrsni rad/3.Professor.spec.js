@@ -12,15 +12,12 @@ describe('HOME PAGE', function () {
             
     })
     it('TC 01 CREATE professor on gradebook', function() {
-        cy.contains('Professors').click()//profPage.professors.click()
-        cy.contains('Create Professor').click()//profPage.create_professor.click()
+        cy.contains('Professors').click()//profPage.professors.click() nece ovako
+        cy.contains('Create Professor').click()//profPage.create_professor.click() nece ovako
         profPage.createProf('Zoka', 'lala', CREATE.picture)
+        cy.wait(1000)
         cy.url().should('include', 'all-professors')
-        /*createProfPage.first_name.type('zoka')
-        createProfPage.last_name.type('lala')
-        createProfPage.add_images.click()
-        createProfPage.image_url.type(CREATE.picture)
-        createProfPage.submit.click()*/
+        
     })
     it('TC 02 CHECKING existing of created professor', function() {
         cy.contains('Professors').click()//profPage.professors

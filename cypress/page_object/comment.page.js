@@ -1,5 +1,5 @@
 export default class CommentPage {
-    get comment() {
+    get comment_1() {
         return cy.get('textarea')
     }
     get submit_comment() {
@@ -8,10 +8,9 @@ export default class CommentPage {
     get delete_comment() {
         return cy.get('.btn-danger').last().contains('Delete').click()
     }
-    createGrade(naziv_dnevnika, select_profesora) {
-        this.gradebook_title.type(naziv_dnevnika)
-        this.professor.type(select_profesora)
-        this.submit.click()
+    get comments_box() {
+        return cy.get('.comments-box')
     }
+    
 }
 export const commentPage = new commentPage()

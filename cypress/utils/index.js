@@ -9,7 +9,7 @@ export const randomEmail = () => {
 }
 export const randomTitle = () => {
     return (
-        Math.random()
+        Letters.random('ABCDEFGHIJKLMNPQRSTUVWXTZabcdefghiklmnpqrstuvwxyz')
         .toString(36)
         .substr(2, 7)
     );
