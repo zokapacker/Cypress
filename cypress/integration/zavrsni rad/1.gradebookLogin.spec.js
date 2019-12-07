@@ -1,5 +1,5 @@
 import { EMAIL } from '../../fixtures/constants'
-import { logPage } from '../../page_object/gradebookLogin.page'
+import { logPage } from '../../page_object/loginGradebook.page'
 describe('LOGIN', function() {
     
     beforeEach(() => {
@@ -12,9 +12,18 @@ describe('LOGIN', function() {
         
         cy.url().should('include', '/login' )
     })
-    it.only('TC 02 Login', function() {
+    it('TC 02 Login', function() {
         logPage.login(EMAIL.EXISTING, EMAIL.PASSWORD)
         cy.get('.nav-link').should('contain', 'Sign out')
     })
-
+    it('TC 03 Negative case with wrong email', function() {
+        logPage.login('gg', EMAIL.PASSWORD)
+        cy.get('.nav-link').contains('Sign out').should('not.exist')
+        //ne pojavljuje se validaciona poruka, ali ne moze se ulogovati sa pogresnim mejlom
+    })
+    it('TC 04 Negative case with wrong password', function() {
+        logPage.login(EMAIL.EXISTING, 'gg')
+        cy.get('.nav-link').contains('Sign out').should('not.exist')
+        //ne pojavljuje se validaciona poruka, ali ne moze se ulogovati sa pogresnom sifrom
+    })
 })

@@ -35,7 +35,9 @@ export default class ProfPage {
     get create_professor() {
         cy.get('.dropdown-item').contains('Create Professor').click()
     }
-    
+    get alert_1() {
+        cy.get('.alert-danger').children()
+    }
     createProf(ime, prezime, urlSlike) {
         this.first_name.type(ime)
         this.last_name.type(prezime)

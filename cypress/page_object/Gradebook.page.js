@@ -32,6 +32,9 @@ export default class GradePage {
     get my_gradebook() {
         return cy.contains('My Gradebook').click()
     }
+    get next_button() {
+        return cy.get('.btn-primary').contains('Next').click()
+    }
     createGrade(naziv_dnevnika, select_profesora) {
         this.gradebook_title.type(naziv_dnevnika)
         this.professor.type(select_profesora)
