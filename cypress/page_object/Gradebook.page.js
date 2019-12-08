@@ -2,8 +2,9 @@ export default class GradePage {
     get gradebook_title() {
         return cy.get('#title')
     }
-    get professor() {
-        return cy.get('#professor').select()//sta s ovim posto na drugi nacin je odradjeno, da stavim u sendvich kao prilog
+    get professorFromList() {
+        return cy.get('#professor > option').eq(0)
+        .then(element => cy.get('#professor').select(element.val()))
     }
     get submit() {
         return cy.get('.btn-primary').contains('Submit')
@@ -32,12 +33,15 @@ export default class GradePage {
     get my_gradebook() {
         return cy.contains('My Gradebook').click()
     }
+    get create_gradebook() {
+        return cy.get('.nav-link').contains('Create Gradebook')
+    }
     get next_button() {
         return cy.get('.btn-primary').contains('Next').click()
     }
     createGrade(naziv_dnevnika, select_profesora) {
         this.gradebook_title.type(naziv_dnevnika)
-        this.professor.type(select_profesora)
+        this.professorFromList.type(select_profesora)
         this.submit.click()
     }
     

@@ -8,7 +8,7 @@ describe('LOGIN', function() {
     })
 
     
-    it('TC 01 Checking Login URL on gradebook', function() {
+    it('TC 01 Checking Login URL', function() {
         
         cy.url().should('include', '/login' )
     })

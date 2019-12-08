@@ -17,7 +17,7 @@ describe('HOME PAGE', function () {
             cy.route('GET', Cypress.config('backendUrl') + 'search?search_term=&page=2').as('stub')
             gradePage.table_dark.children('tbody').should('have.length', 10)
     })
-    it('TC 02 Home Page PAGINATION - 2. nacin', function() {
+    it('TC 02 Home Page PAGINATION 2. nacin', function() {
         gradePage.table_dark.children('tbody').should('have.length', 10)
         gradePage.next_button.click()
         gradePage.table_dark.children('tbody').should('have.length', 10)

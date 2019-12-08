@@ -8,24 +8,32 @@ describe('HOME PAGE', function () {
         cy.visit('/')
         cy.contains('Sign in').click()
         logPage.login(EMAIL.EXISTING, EMAIL.PASSWORD)
-            
-    })
-    it('TC 01 Create Student on gradebook-app', function() {
         gradePage.my_gradebook.click()
         gradePage.add_student.click()
-        profPage.first_name.type('lele')
-        profPage.last_name.type('Studentic')
+        cy.wait(1000)
+    })
+    it('TC 01 Create and CHECKING Student on gradebook-app', function() {
+        cy.wait(1000)
+        profPage.first_name.type(CREATE.studentName)
+        profPage.last_name.type(CREATE.studentLastName)
         gradePage.student_add_image.click()
         profPage.image_url.type(CREATE.picture)
         gradePage.submit.click()
         cy.url().should('include', 'single-gradebook')
-        
+        cy.get('td').eq(3).should('contain', CREATE.studentName)   
     })
-    it('TC 02 Checking existing of created student', function() {
-        gradePage.my_gradebook.click()
-        cy.get('td').eq(3).should('contain', 'lele Studentic')
-        
+    it('TC 02 Create Student without first name', function() {
+        profPage.last_name.type(CREATE.studentLastName)
+        gradePage.student_add_image.click()
+        profPage.image_url.type(CREATE.picture)
+        gradePage.submit.click()
+        //NEMA VALIDACIONIH PORUKA, ALI STUDENT NIJE KREIRAN
     })
-    
-    
+    it.only('TC 03 Create Student without last name', function() {
+        profPage.first_name.type(CREATE.studentName)
+        gradePage.student_add_image.click()
+        profPage.image_url.type(CREATE.picture)
+        gradePage.submit.click()
+        //NEMA VALIDACIONIH PORUKA, ALI STUDENT NIJE KREIRAN
+    })
 })

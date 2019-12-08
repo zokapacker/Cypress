@@ -27,16 +27,16 @@ export default class ProfPage {
         return cy.get('.table-striped')
     }
     get professors() {
-        cy.get('.dropdown-toggle').contains('Professors').click()
+        cy.get('class="nav-item dropdown"').contains('Professors')
     }
     get all_professors() {
         cy.contains('All Professors').click()
     }
     get create_professor() {
-        cy.get('.dropdown-item').contains('Create Professor').click()
+        cy.get('#navbardrop')
     }
     get alert_1() {
-        cy.get('.alert-danger').children()
+        cy.get('.alert-danger')
     }
     createProf(ime, prezime, urlSlike) {
         this.first_name.type(ime)
