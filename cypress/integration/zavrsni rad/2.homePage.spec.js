@@ -28,7 +28,7 @@ describe('HOME PAGE', function () {
         gradePage.table_dark.children('thead').contains('Created at')
     })
     it('TC 04 Home Page FILTER', function() {
-        //cy.wait(1000)
+        cy.wait(1000)
         gradePage.gradebook_filter.type('d')
         gradePage.search.click()
         gradePage.table_dark.children('tbody').should('have.length', 10)

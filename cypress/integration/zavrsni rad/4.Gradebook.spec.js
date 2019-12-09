@@ -31,6 +31,7 @@ describe('GRADEBOOK PAGE', function () {
         gradePage.table_dark.should('contain', 'Students')
         gradePage.table_dark.should('contain', 'Add Student')
         gradePage.add_student.click()
+        cy.wait(1000)
         cy.url().should('include', 'add-student')
     })
     it('TC 03 EDIT gradebook', function() {

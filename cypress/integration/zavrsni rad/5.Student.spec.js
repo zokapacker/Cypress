@@ -10,10 +10,9 @@ describe('HOME PAGE', function () {
         logPage.login(EMAIL.EXISTING, EMAIL.PASSWORD)
         gradePage.my_gradebook.click()
         gradePage.add_student.click()
-        cy.wait(1000)
+        cy.wait(2000)
     })
-    it('TC 01 Create and CHECKING Student on gradebook-app', function() {
-        cy.wait(1000)
+    it('TC 01 Create and CHECKING Student', function() {
         profPage.first_name.type(CREATE.studentName)
         profPage.last_name.type(CREATE.studentLastName)
         gradePage.student_add_image.click()
@@ -23,17 +22,19 @@ describe('HOME PAGE', function () {
         cy.get('td').eq(3).should('contain', CREATE.studentName)   
     })
     it('TC 02 Create Student without first name', function() {
+        
         profPage.last_name.type(CREATE.studentLastName)
         gradePage.student_add_image.click()
         profPage.image_url.type(CREATE.picture)
         gradePage.submit.click()
         //NEMA VALIDACIONIH PORUKA, ALI STUDENT NIJE KREIRAN
     })
-    it.only('TC 03 Create Student without last name', function() {
+    it('TC 03 Create Student without last name', function() {
         profPage.first_name.type(CREATE.studentName)
         gradePage.student_add_image.click()
         profPage.image_url.type(CREATE.picture)
         gradePage.submit.click()
         //NEMA VALIDACIONIH PORUKA, ALI STUDENT NIJE KREIRAN
     })
+    //ako nece iz prve, vrteti vise puta. Ne uspe da locira my gradebook
 })

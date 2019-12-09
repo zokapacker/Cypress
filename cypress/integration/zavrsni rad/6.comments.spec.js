@@ -11,10 +11,10 @@ describe('COMMENTS', function () {
         gradePage.my_gradebook.click()
             
     })
-    it('TC 01 Create comment on gradebook-app', function() {
+    it('TC 01 Create comment', function() {
         commentPage.comment_1.type(CREATE.validTitle)
         commentPage.submit_comment.click()
-        //gradePage.my_gradebook.click()
+        gradePage.my_gradebook.click()
         cy.get('.comments-box').should('contain', CREATE.validTitle)
         //cy.get('div').children('div').eq(1).children('div').last().should('contain', CREATE.validTitle)
     })
